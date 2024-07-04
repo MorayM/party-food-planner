@@ -1,9 +1,10 @@
 import FoodRow from 'components/FoodRow';
 import { FormEvent, useEffect, useState } from 'react';
-import { Food, getFoods } from 'services/foods';
+import { getFoods } from 'services/foods';
+import { Tables } from 'types/supabase';
 
 function Index() {
-  const [foods, setFoods] = useState<Food[] | null>([]);
+  const [foods, setFoods] = useState<Tables<'foods'>[] | null>([]);
 
   async function loadFoods() {
     const { data } = await getFoods();

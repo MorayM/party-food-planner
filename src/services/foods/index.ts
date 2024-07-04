@@ -1,6 +1,10 @@
 import supabase from 'services/supabase';
-import { Database } from 'types/supabase';
-
-export type Food = Database['public']['Tables']['foods']['Row'];
 
 export const getFoods = () => supabase.from('foods').select();
+
+export const updateFoodOrder = (data: FormData) => {
+  data.forEach((value, id) => {
+    // Add orders to the person
+    // Update fulfilled count on food
+  });
+};

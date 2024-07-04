@@ -1,7 +1,7 @@
-import { Food } from 'services/foods';
+import { Tables } from 'types/supabase';
 
 interface FoodRowProps {
-  food: Food;
+  food: Tables<'foods'>;
 }
 
 function FoodRow({ food }: FoodRowProps) {
