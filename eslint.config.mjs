@@ -18,7 +18,7 @@ const compat = new FlatCompat({
 });
 
 export default [{
-    ignores: ["**/dist", "**/vite.config.ts", "**/.prettierrc.cjs", "**/.stylelintrc.cjs", "**/eslint.config.mjs"],
+    ignores: ["**/dist", "**/vite.config.ts", "**/.prettierrc.cjs", "**/.stylelintrc.cjs", "**/eslint.config.mjs", "src/types/supabase.ts"],
 }, ...fixupConfigRules(compat.extends(
     "airbnb",
     "airbnb-typescript",
