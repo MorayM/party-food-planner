@@ -1,5 +1,7 @@
 import { Tables } from 'types/supabase';
 
+import styles from './FoodRow.module.scss';
+
 interface FoodRowProps {
   food: Tables<'foods'>;
 }
@@ -20,11 +22,11 @@ function FoodRow({ food }: FoodRowProps) {
   return (
     <tr key={food.id}>
       <td>
-        <h4>{food.name}</h4>
+        <h3>{food.name}</h3>
         {food.description && <span>{food.description}</span>}
       </td>
-      <td>{food.required}</td>
-      <td>{buildActionCell()}</td>
+      <td className={styles.centered}>{food.required}</td>
+      <td className={styles.centered}>{buildActionCell()}</td>
     </tr>
   );
 }

@@ -3,6 +3,8 @@ import { FormEvent, useEffect, useState } from 'react';
 import { RowUpdate, getFoods, updateFoodOrder } from 'services/foods';
 import { Tables } from 'types/supabase';
 
+import styles from './index.module.scss';
+
 function Index() {
   const [foods, setFoods] = useState<Tables<'foods'>[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,21 +35,29 @@ function Index() {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <table>
-        <thead>
-          <tr>
-            <th>What</th>
-            <th>How many we need</th>
-            <th>How many can you bring?</th>
-          </tr>
-        </thead>
-        <tbody>{foods?.map((f) => <FoodRow key={f.id} food={f} />)}</tbody>
-      </table>
-      <button type="submit" disabled={isLoading}>
-        Save
-      </button>
-    </form>
+    <div>
+      <p>
+        If you have any intolerances and can&apos;t bring anything on this list, please choose something else that
+        you&apos;d like!
+      </p>
+      <form onSubmit={handleSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <th>What we need</th>
+              <th>How many we need</th>
+              <th>How many can you bring?</th>
+            </tr>
+          </thead>
+          <tbody>{foods?.map((f) => <FoodRow key={f.id} food={f} />)}</tbody>
+        </table>
+        <div className={styles.save}>
+          <button type="submit" disabled={isLoading}>
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
