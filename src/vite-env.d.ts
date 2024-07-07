@@ -4,8 +4,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_SUPABASE_ENDPOINT: string;
-  readonly VITE_SUPABASE_KEY: string;
-  // more env variables...
+  readonly VITE_SUPABASE_KEY: string; // Local variable
+  readonly VITE_USER_EMAIL: string; // Local variable
 }
 
 interface ImportMeta {
