@@ -7,6 +7,7 @@ import styles from './index.module.scss';
 
 function Index() {
   const [foods, setFoods] = useState<Tables<'foods'>[] | null>([]);
+  const [lastUpdate, setLastUpdate] = useState<RowUpdate[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function loadFoods() {
@@ -26,6 +27,7 @@ function Index() {
       setIsLoading(true);
       await updateFoodOrder(rows);
       await loadFoods();
+      setLastUpdate(rows);
       setIsLoading(false);
     }
   }
@@ -40,6 +42,18 @@ function Index() {
         If you have any intolerances and can&apos;t bring anything on this list, please choose something else that
         you&apos;d like!
       </p>
+      {lastUpdate && (
+        <div>
+          <p>Thank you so much for your help! You selected:</p>
+          <ul>
+            {lastUpdate.map((r) => (
+              <li key={r.food.id}>
+                {r.food.name} - {r.count}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <table>
           <thead>
