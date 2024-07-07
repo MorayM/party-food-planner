@@ -2,19 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import Index from 'pages';
+import Login from 'pages/login';
+import Logout from 'pages/logout';
+import { AuthProvider } from 'context/AuthContext';
+import { ProtectedRoute } from 'components/ProtectedRoute';
 import App from './App';
-import Index from './pages';
 
 import './index.scss';
 // https://reactrouter.com/en/main/start/tutorial
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <App />,
     children: [
       {
-        path: '/',
-        element: <Index />,
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/logout',
+        element: <Logout />,
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/',
+            element: <Index />,
+          },
+        ],
       },
     ],
   },
@@ -22,6 +38,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 );
