@@ -16,6 +16,7 @@ export type Database = {
           fulfilled: number
           id: number
           name: string
+          quantity_description: string | null
           required: number
         }
         Insert: {
@@ -24,6 +25,7 @@ export type Database = {
           fulfilled?: number
           id?: number
           name: string
+          quantity_description?: string | null
           required?: number
         }
         Update: {
@@ -32,6 +34,7 @@ export type Database = {
           fulfilled?: number
           id?: number
           name?: string
+          quantity_description?: string | null
           required?: number
         }
         Relationships: []

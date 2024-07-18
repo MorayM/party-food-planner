@@ -1,5 +1,6 @@
 import { Tables } from 'types/supabase';
 
+import { pluralize } from 'utils/index';
 import styles from './FoodRow.module.scss';
 
 interface FoodRowProps {
@@ -19,13 +20,21 @@ function FoodRow({ food }: FoodRowProps) {
       </select>
     );
   }
+  function buildRequired() {
+    if (!food.quantity_description) return food.required;
+    return (
+      <>
+        {food.required} {pluralize(food.quantity_description, food.required)}
+      </>
+    );
+  }
   return (
     <tr key={food.id}>
       <td>
         <h3>{food.name}</h3>
         {food.description && <span>{food.description}</span>}
       </td>
-      <td className={styles.centered}>{food.required}</td>
+      <td className={styles.centered}>{buildRequired()}</td>
       <td className={styles.centered}>{buildActionCell()}</td>
     </tr>
   );

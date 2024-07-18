@@ -1,7 +1,7 @@
 import supabase from 'services/supabase';
 import { Tables } from 'types/supabase';
 
-export const getFoods = () => supabase.from('foods').select();
+export const getFoods = () => supabase.from('foods').select().order('id', { ascending: true });
 
 export type RowUpdate = {
   food: Tables<'foods'>;
