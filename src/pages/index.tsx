@@ -39,8 +39,12 @@ function Index() {
   return (
     <div>
       <p>
+        We will be at the venue from 10am to midday on the day of the party if you want to leave things in the venue
+        fridge. We will also be around from 6pm.
+      </p>
+      <p>
         If you have any intolerances and can&apos;t bring anything on this list, please choose something else that
-        you&apos;d like!
+        you&apos;d like! If you bring anything GF or vegan, please make sure it&apos;s labelled.
       </p>
       {lastUpdate && (
         <div>
