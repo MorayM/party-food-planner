@@ -38,6 +38,7 @@ function Index() {
 
   return (
     <div>
+      <h2>We&apos;re looking forward to seeing you at The Old Theatre Royal Bath at 7:30pm on 29th July!</h2>
       <p>
         We will be at the venue from 10am to midday on the day of the party if you want to leave things in the venue
         fridge. We will also be around from 6pm.
