@@ -21,10 +21,12 @@ function FoodRow({ food }: FoodRowProps) {
     );
   }
   function buildRequired() {
-    if (!food.quantity_description) return food.required;
+    if (food.fulfilled === food.required) return <span>All sorted!</span>;
+    const remaining = food.required - food.fulfilled;
+    if (!food.quantity_description) return remaining;
     return (
       <>
-        {food.required} {pluralize(food.quantity_description, food.required)}
+        {remaining} {pluralize(food.quantity_description, remaining)}
       </>
     );
   }
